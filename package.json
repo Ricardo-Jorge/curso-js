@@ -1,5 +1,5 @@
 {
-  "name": "aularouter",
+  "name": "aulaexpviews",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   },
   "devDependencies": {
