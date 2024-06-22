@@ -1,12 +1,15 @@
 exports.middlewareGlobal = (request, response, next) => {
-    response.locals.localVariable = 'Teste de uma variável local.';
+    response.locals.errors = request.flash('errors');
+    response.locals.success = request.flash('success');
     next();
 };
 
 exports.checkCsrfError = (err, request, response, next) => {
-    if(err && 'EBADCSRFTOKEN' === err.code) {
+    if(err) {
         return response.render('404');
     }
+
+    next();
 };
 
 exports.csrfMiddleware = (request, response, next) => {
