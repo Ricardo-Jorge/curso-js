@@ -9,13 +9,15 @@
         <div class="col-lg-8 my-3">
            <h1 class="text-center">Contato</h1>
            <p class="text-center lead">Crie Edite Exclua seus contatos.</p>
-
         
         <%- include('includes/messages') %><br>
 
-        <form action="/contato/register" method="POST">
-            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-
+        <% if(contato._id) { %>
+        <form action="/contato/edit/<%= contato._id%>" method="POST">
+          <% } else { %>
+            <form action="/contato/register" method="POST">
+          <% } %>   
+          <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             <div class="form-group">
               <label>Nome</label>
               <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
@@ -32,7 +34,7 @@
               <label>Telefone</label>
               <input value="<%= contato.telefone %>"type="tel" class="form-control" name="telefone">
             </div>         
-            <button type="submit" class="btn btn-primary">Criar novo contato</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
           </form>
 
 
